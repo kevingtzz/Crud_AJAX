@@ -33,7 +33,28 @@ $(document).ready(function() {
         };
         $.post('task-add.php', postData, function(response) {
             console.log(response);
+
+            $('#task-form').trigger('reset');
         });
         e.preventDefault();
+    });
+
+    $.ajax({
+        url: 'task-list.php',
+        type: 'GET',
+        success: function(res) {
+            let tasks = JSON.parse(res);
+            let template = '';
+            tasks.forEach(task => {
+                template += `
+                    <tr>
+                        <td>${task.id}</td>
+                        <td>${task.name}</td>
+                        <td>${task.description}</td>
+                    </tr>
+                `
+            });
+            $('#task').html(template);
+        }
     });
 });

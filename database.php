@@ -6,9 +6,5 @@
         'root',
         'crud_ajax'
     );
-
-        //if($connection) {
-        //    echo 'Database is connected';
-        //}
-
+    
 ?>
